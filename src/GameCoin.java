@@ -6,6 +6,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.border.BevelBorder;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -14,6 +15,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.JSlider;
+import javax.swing.JCheckBox;
 
 public class GameCoin {
 
@@ -68,41 +71,16 @@ public class GameCoin {
 		labelImage.setBounds(377, 69, 197, 191);
 		frame.getContentPane().add(labelImage);
 
-		ImageIcon FlipCoin = new ImageIcon(new ImageIcon("FlipCoin.jpg").getImage().getScaledInstance(200, 200, 100));
-		ImageIcon Heads = new ImageIcon(new ImageIcon("Heads.png").getImage().getScaledInstance(150, 150, 100));
-		ImageIcon Tails = new ImageIcon(new ImageIcon("Tails.png").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon headsDollar = new ImageIcon(new ImageIcon("Heads.png").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon tailsDollar = new ImageIcon(new ImageIcon("Tails.png").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon headsEuro = new ImageIcon(new ImageIcon("HeadsEuro.jpg").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon tailsEuro = new ImageIcon(new ImageIcon("TailsEuro.png").getImage().getScaledInstance(150, 150, 100));
 
 		JButton buttonTossCoin = new JButton("Toss one!");
 		buttonTossCoin.setFont(new Font("Stencil", Font.PLAIN, 15));
 		buttonTossCoin.setForeground(Color.BLACK);
 		buttonTossCoin.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		buttonTossCoin.setBackground(Color.GRAY);
-		buttonTossCoin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				coin = new Coin();
-				try {
-					String coinToss = coin.coinToss();
-					TimeUnit.SECONDS.sleep(1);
-					TimeUnit.SECONDS.sleep(1);
-					if (coinToss.equalsIgnoreCase("Heads!!")) {
-						labelImage.setIcon(Heads);
-					}
-					if (coinToss.equalsIgnoreCase("Tails!!")) {
-						labelImage.setIcon(Tails);
-					}
-					textFieldResult.setText(coinToss);
-//					textFieldResult.setText(coin.coinToss());
-				} catch (InterruptedException e1) {
-					System.out.println("Something went wrong with the coin toss");
-
-				}
-
-				textFieldCount.setText(Integer.toString(Coin.countToss));
-				textFieldPercentageHeads.setText(Integer.toString(coin.provideStatisticsHeads()) + "%");
-				textFieldPercentageTails.setText(Integer.toString(coin.provideStatisticsTails()) + "%");
-			}
-		});
 		buttonTossCoin.setBounds(229, 69, 138, 63);
 		frame.getContentPane().add(buttonTossCoin);
 
@@ -154,6 +132,57 @@ public class GameCoin {
 		textFieldPercentageTails.setColumns(10);
 		textFieldPercentageTails.setBounds(129, 206, 65, 24);
 		frame.getContentPane().add(textFieldPercentageTails);
+
+		JCheckBox checkBoxDollar = new JCheckBox("Dollar");
+		checkBoxDollar.setBounds(229, 170, 138, 24);
+		frame.getContentPane().add(checkBoxDollar);
+
+		JCheckBox checkBoxEuro = new JCheckBox("Euro");
+		checkBoxEuro.setBounds(229, 204, 138, 24);
+		frame.getContentPane().add(checkBoxEuro);
+
+		ButtonGroup groupCoins = new ButtonGroup();
+		groupCoins.add(checkBoxEuro);
+		groupCoins.add(checkBoxDollar);
+
+		buttonTossCoin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				coin = new Coin();
+				try {
+					String coinToss = coin.coinToss();
+					TimeUnit.SECONDS.sleep(1);
+					TimeUnit.SECONDS.sleep(1);
+					if (checkBoxDollar.isSelected()) {
+						if (coinToss.equalsIgnoreCase("Heads!!")) {
+							labelImage.setIcon(headsDollar);
+						}
+						if (coinToss.equalsIgnoreCase("Tails!!")) {
+							labelImage.setIcon(tailsDollar);
+						}
+					}
+
+					if (checkBoxEuro.isSelected()) {
+						if (coinToss.equalsIgnoreCase("Heads!!")) {
+							labelImage.setIcon(headsEuro);
+						}
+						if (coinToss.equalsIgnoreCase("Tails!!")) {
+							labelImage.setIcon(tailsEuro);
+						}
+					}
+
+					textFieldResult.setText(coinToss);
+//					textFieldResult.setText(coin.coinToss());
+				} catch (InterruptedException e1) {
+					System.out.println("Something went wrong with the coin toss");
+
+				}
+
+				textFieldCount.setText(Integer.toString(Coin.countToss));
+				textFieldPercentageHeads.setText(Integer.toString(coin.provideStatisticsHeads()) + "%");
+				textFieldPercentageTails.setText(Integer.toString(coin.provideStatisticsTails()) + "%");
+			}
+		});
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
