@@ -19,7 +19,8 @@ public class GameCoin {
 	private Coin coin;
 	private JTextField textFieldResult;
 	private JTextField textFieldCount;
-	private int countToss;
+	private JTextField textFieldPercentageHeads;
+	private JTextField textFieldPercentageTails;
 
 	/**
 	 * Launch the application.
@@ -76,8 +77,10 @@ public class GameCoin {
 					System.out.println("Something went wrong with the coin toss");
 
 				}
-				countToss++;
-				textFieldCount.setText(Integer.toString(countToss));
+
+				textFieldCount.setText(Integer.toString(Coin.countToss));
+				textFieldPercentageHeads.setText(Integer.toString(coin.provideStatisticsHeads()) + "%");
+				textFieldPercentageTails.setText(Integer.toString(coin.provideStatisticsTails()) + "%");
 			}
 		});
 		buttonTossCoin.setBounds(229, 69, 138, 63);
@@ -103,6 +106,34 @@ public class GameCoin {
 		textFieldCount.setBounds(129, 69, 65, 24);
 		frame.getContentPane().add(textFieldCount);
 		textFieldCount.setColumns(10);
+
+		JLabel labelPercentageHeads = new JLabel("percentage heads");
+		labelPercentageHeads.setOpaque(true);
+		labelPercentageHeads.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPercentageHeads.setFont(new Font("Stencil", Font.PLAIN, 10));
+		labelPercentageHeads.setBackground(Color.GRAY);
+		labelPercentageHeads.setBounds(10, 170, 109, 24);
+		frame.getContentPane().add(labelPercentageHeads);
+
+		JLabel labelPercentageTails = new JLabel("percentage tails");
+		labelPercentageTails.setOpaque(true);
+		labelPercentageTails.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPercentageTails.setFont(new Font("Stencil", Font.PLAIN, 10));
+		labelPercentageTails.setBackground(Color.GRAY);
+		labelPercentageTails.setBounds(10, 205, 109, 24);
+		frame.getContentPane().add(labelPercentageTails);
+
+		textFieldPercentageHeads = new JTextField();
+		textFieldPercentageHeads.setEditable(false);
+		textFieldPercentageHeads.setColumns(10);
+		textFieldPercentageHeads.setBounds(129, 171, 65, 24);
+		frame.getContentPane().add(textFieldPercentageHeads);
+
+		textFieldPercentageTails = new JTextField();
+		textFieldPercentageTails.setEditable(false);
+		textFieldPercentageTails.setColumns(10);
+		textFieldPercentageTails.setBounds(129, 206, 65, 24);
+		frame.getContentPane().add(textFieldPercentageTails);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
