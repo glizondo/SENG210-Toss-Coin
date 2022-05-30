@@ -172,7 +172,6 @@ public class GameCoin {
 					}
 
 					textFieldResult.setText(coinToss);
-//					textFieldResult.setText(coin.coinToss());
 				} catch (InterruptedException e1) {
 					System.out.println("Something went wrong with the coin toss");
 
