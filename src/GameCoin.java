@@ -6,12 +6,14 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.border.BevelBorder;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 public class GameCoin {
 
@@ -62,6 +64,14 @@ public class GameCoin {
 		labelIntroGame.setBounds(10, 11, 564, 47);
 		frame.getContentPane().add(labelIntroGame);
 
+		JLabel labelImage = new JLabel("");
+		labelImage.setBounds(377, 69, 197, 191);
+		frame.getContentPane().add(labelImage);
+
+		ImageIcon FlipCoin = new ImageIcon(new ImageIcon("FlipCoin.jpg").getImage().getScaledInstance(200, 200, 100));
+		ImageIcon Heads = new ImageIcon(new ImageIcon("Heads.png").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon Tails = new ImageIcon(new ImageIcon("Tails.png").getImage().getScaledInstance(150, 150, 100));
+
 		JButton buttonTossCoin = new JButton("Toss one!");
 		buttonTossCoin.setFont(new Font("Stencil", Font.PLAIN, 15));
 		buttonTossCoin.setForeground(Color.BLACK);
@@ -69,10 +79,20 @@ public class GameCoin {
 		buttonTossCoin.setBackground(Color.GRAY);
 		buttonTossCoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				coin = new Coin();
 				try {
-					TimeUnit.SECONDS.sleep(2);
-					textFieldResult.setText(coin.coinToss());
+					String coinToss = coin.coinToss();
+					TimeUnit.SECONDS.sleep(1);
+					TimeUnit.SECONDS.sleep(1);
+					if (coinToss.equalsIgnoreCase("Heads!!")) {
+						labelImage.setIcon(Heads);
+					}
+					if (coinToss.equalsIgnoreCase("Tails!!")) {
+						labelImage.setIcon(Tails);
+					}
+					textFieldResult.setText(coinToss);
+//					textFieldResult.setText(coin.coinToss());
 				} catch (InterruptedException e1) {
 					System.out.println("Something went wrong with the coin toss");
 
