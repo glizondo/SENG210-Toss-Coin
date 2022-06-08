@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Font;
@@ -138,12 +139,41 @@ public class GameCoin {
 		frame.getContentPane().add(checkBoxDollar);
 
 		JCheckBox checkBoxEuro = new JCheckBox("Euro");
-		checkBoxEuro.setBounds(229, 204, 138, 24);
+		checkBoxEuro.setBounds(229, 197, 138, 24);
 		frame.getContentPane().add(checkBoxEuro);
 
 		ButtonGroup groupCoins = new ButtonGroup();
 		groupCoins.add(checkBoxEuro);
 		groupCoins.add(checkBoxDollar);
+
+		JCheckBox checkBoxChoseHeads = new JCheckBox("Heads");
+		checkBoxChoseHeads.setForeground(Color.BLACK);
+		checkBoxChoseHeads.setBounds(129, 108, 71, 24);
+		frame.getContentPane().add(checkBoxChoseHeads);
+
+		JCheckBox checkBoxChoseTails = new JCheckBox("Tails");
+		checkBoxChoseTails.setBounds(129, 135, 71, 24);
+		frame.getContentPane().add(checkBoxChoseTails);
+
+		ButtonGroup groupPickOne = new ButtonGroup();
+		groupPickOne.add(checkBoxChoseHeads);
+		groupPickOne.add(checkBoxChoseTails);
+
+		JLabel labelPickOne = new JLabel("Pick one");
+		labelPickOne.setOpaque(true);
+		labelPickOne.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPickOne.setFont(new Font("Stencil", Font.PLAIN, 10));
+		labelPickOne.setBackground(Color.GRAY);
+		labelPickOne.setBounds(10, 108, 109, 24);
+		frame.getContentPane().add(labelPickOne);
+		
+		JLabel labelPickOne_1 = new JLabel("Pick one");
+		labelPickOne_1.setOpaque(true);
+		labelPickOne_1.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPickOne_1.setFont(new Font("Stencil", Font.PLAIN, 10));
+		labelPickOne_1.setBackground(Color.GRAY);
+		labelPickOne_1.setBounds(229, 143, 109, 24);
+		frame.getContentPane().add(labelPickOne_1);
 
 		buttonTossCoin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -152,22 +182,45 @@ public class GameCoin {
 				try {
 					String coinToss = coin.coinToss();
 					TimeUnit.SECONDS.sleep(1);
-					TimeUnit.SECONDS.sleep(1);
 					if (checkBoxDollar.isSelected()) {
 						if (coinToss.equalsIgnoreCase("Heads!!")) {
 							labelImage.setIcon(headsDollar);
+							if (checkBoxChoseHeads.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
+							if (checkBoxChoseTails.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
 						}
 						if (coinToss.equalsIgnoreCase("Tails!!")) {
 							labelImage.setIcon(tailsDollar);
+							if (checkBoxChoseHeads.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
+							if (checkBoxChoseTails.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
 						}
 					}
 
 					if (checkBoxEuro.isSelected()) {
 						if (coinToss.equalsIgnoreCase("Heads!!")) {
 							labelImage.setIcon(headsEuro);
+							if (checkBoxChoseHeads.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
+							if (checkBoxChoseTails.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
 						}
 						if (coinToss.equalsIgnoreCase("Tails!!")) {
 							labelImage.setIcon(tailsEuro);
+							if (checkBoxChoseHeads.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
+							if (checkBoxChoseTails.isSelected()) {
+								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+							}
 						}
 					}
 
