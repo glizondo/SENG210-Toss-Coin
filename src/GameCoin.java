@@ -135,10 +135,12 @@ public class GameCoin {
 		frame.getContentPane().add(textFieldPercentageTails);
 
 		JCheckBox checkBoxDollar = new JCheckBox("Dollar");
+		checkBoxDollar.setBackground(Color.GREEN);
 		checkBoxDollar.setBounds(229, 170, 138, 24);
 		frame.getContentPane().add(checkBoxDollar);
 
 		JCheckBox checkBoxEuro = new JCheckBox("Euro");
+		checkBoxEuro.setBackground(Color.CYAN);
 		checkBoxEuro.setBounds(229, 197, 138, 24);
 		frame.getContentPane().add(checkBoxEuro);
 
@@ -147,11 +149,13 @@ public class GameCoin {
 		groupCoins.add(checkBoxDollar);
 
 		JCheckBox checkBoxChoseHeads = new JCheckBox("Heads");
+		checkBoxChoseHeads.setBackground(Color.YELLOW);
 		checkBoxChoseHeads.setForeground(Color.BLACK);
 		checkBoxChoseHeads.setBounds(129, 108, 71, 24);
 		frame.getContentPane().add(checkBoxChoseHeads);
 
 		JCheckBox checkBoxChoseTails = new JCheckBox("Tails");
+		checkBoxChoseTails.setBackground(Color.RED);
 		checkBoxChoseTails.setBounds(129, 135, 71, 24);
 		frame.getContentPane().add(checkBoxChoseTails);
 
