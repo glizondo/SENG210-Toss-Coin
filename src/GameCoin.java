@@ -55,9 +55,16 @@ public class GameCoin {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		ImageIcon headsDollar = new ImageIcon(new ImageIcon("Heads.png").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon tailsDollar = new ImageIcon(new ImageIcon("Tails.png").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon headsEuro = new ImageIcon(new ImageIcon("HeadsEuro.jpg").getImage().getScaledInstance(150, 150, 100));
+		ImageIcon tailsEuro = new ImageIcon(new ImageIcon("TailsEuro.png").getImage().getScaledInstance(150, 150, 100));
+		
+		frame = new JFrame("COIN TOSS GAME");
 		frame.setBounds(100, 100, 600, 400);
 		frame.getContentPane().setLayout(null);
+		frame.setIconImage(null);
+		frame.setIconImage(headsDollar.getImage());
 
 		JLabel labelIntroGame = new JLabel("Coin Toss Game");
 		labelIntroGame.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
@@ -72,10 +79,7 @@ public class GameCoin {
 		labelImage.setBounds(377, 69, 197, 191);
 		frame.getContentPane().add(labelImage);
 
-		ImageIcon headsDollar = new ImageIcon(new ImageIcon("Heads.png").getImage().getScaledInstance(150, 150, 100));
-		ImageIcon tailsDollar = new ImageIcon(new ImageIcon("Tails.png").getImage().getScaledInstance(150, 150, 100));
-		ImageIcon headsEuro = new ImageIcon(new ImageIcon("HeadsEuro.jpg").getImage().getScaledInstance(150, 150, 100));
-		ImageIcon tailsEuro = new ImageIcon(new ImageIcon("TailsEuro.png").getImage().getScaledInstance(150, 150, 100));
+
 
 		JButton buttonTossCoin = new JButton("Toss one!");
 		buttonTossCoin.setFont(new Font("Stencil", Font.PLAIN, 15));
@@ -190,19 +194,19 @@ public class GameCoin {
 						if (coinToss.equalsIgnoreCase("Heads!!")) {
 							labelImage.setIcon(headsDollar);
 							if (checkBoxChoseHeads.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You win!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 							if (checkBoxChoseTails.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You lose!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 						}
 						if (coinToss.equalsIgnoreCase("Tails!!")) {
 							labelImage.setIcon(tailsDollar);
 							if (checkBoxChoseHeads.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You lose!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 							if (checkBoxChoseTails.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You win!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 						}
 					}
@@ -211,19 +215,19 @@ public class GameCoin {
 						if (coinToss.equalsIgnoreCase("Heads!!")) {
 							labelImage.setIcon(headsEuro);
 							if (checkBoxChoseHeads.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You win!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 							if (checkBoxChoseTails.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You lose!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 						}
 						if (coinToss.equalsIgnoreCase("Tails!!")) {
 							labelImage.setIcon(tailsEuro);
 							if (checkBoxChoseHeads.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You lose!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You lose!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 							if (checkBoxChoseTails.isSelected()) {
-								JOptionPane.showMessageDialog(null, "You win!!", "Game", JOptionPane.PLAIN_MESSAGE);
+								JOptionPane.showMessageDialog(null, "You win!!", "COIN TOSS GAME", JOptionPane.PLAIN_MESSAGE);
 							}
 						}
 					}
